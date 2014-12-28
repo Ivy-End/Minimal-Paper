@@ -119,6 +119,10 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
+
+/**
+ * Reply form fields
+ */
 function simple_reply_fields($fields) {
 	$fields['author'] = '<p class="comment-form-author"><input id="author" name="author" type="text" value="" placeholder="姓名" size="30" aria-required="true"></p>';
 	$fields['email'] = '<p class="comment-form-email"><input id="email" name="email" type="text" value="" placeholder="电子邮件" size="30" aria-required="true"></p>';
@@ -126,3 +130,16 @@ function simple_reply_fields($fields) {
 	return $fields;
 }
 add_filter('comment_form_default_fields','simple_reply_fields');
+
+
+/**
+ * Gavatar
+ */
+function iopenv_get_https_avatar($avatar) {
+	// Replacement for HTTPS domain
+	$avatar = str_replace(array("www.gravatar.com", "0.gravatar.com", "1.gravatar.com", "2.gravatar.com"), "secure.gravatar.com", $avatar);
+	// Replacement for HTTPS protocol
+	$avatar = str_replace("http", "https", $avatar);
+	return $avatar;
+}
+add_filter('get_avatar', 'iopenv_get_https_avatar');
