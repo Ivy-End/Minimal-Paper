@@ -23,7 +23,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php simple_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+	<!--<footer class="entry-footer">
+		<?php // simple_entry_footer(); ?>
+	</footer>--><!-- .entry-footer -->
 </article><!-- #post-## -->
