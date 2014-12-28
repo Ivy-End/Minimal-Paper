@@ -118,3 +118,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+function simple_reply_fields($fields) {
+	$fields['author'] = '<p class="comment-form-author"><input id="author" name="author" type="text" value="" placeholder="姓名" size="30" aria-required="true"></p>';
+	$fields['email'] = '<p class="comment-form-email"><input id="email" name="email" type="text" value="" placeholder="电子邮件" size="30" aria-required="true"></p>';
+	$fields['url'] = '<p class="comment-form-url"><input id="url" name="url" type="text" placeholder="网址" value="" size="30"></p>';
+	return $fields;
+}
+add_filter('comment_form_default_fields','simple_reply_fields');
