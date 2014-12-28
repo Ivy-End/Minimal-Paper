@@ -19,14 +19,14 @@
 		<?php
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
-				__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'simple' ),
+				__( '更多内容 %s <span class="meta-nav">&rarr;</span>', 'simple' ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 		?>
 
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'simple' ),
+				'before' => '<div class="page-links">' . __( '页码:', 'simple' ),
 				'after'  => '</div>',
 			) );
 		?>

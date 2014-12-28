@@ -365,9 +365,24 @@ input[type="url"],
 input[type="password"],
 input[type="search"],
 textarea {
-	color: #666;
+	padding: .7em;
+	font-size: .9em;
+	color: #444;
+	border: 1px solid #DDD;
+	border-radius: 0;
+	background: #FFF;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+
+	/*color: #666;
 	border: 1px solid #ccc;
-	border-radius: 3px;
+	border-radius: 3px;*/
 }
 
 input[type="text"]:focus,
@@ -376,7 +391,9 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 input[type="search"]:focus,
 textarea:focus {
-	color: #111;
+	border-color: #AAA;
+	outline: 0;
+	// color: #111;
 }
 
 input[type="text"],
@@ -384,7 +401,7 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"] {
-	padding: 3px;
+	// padding: 3px;
 }
 
 textarea {
@@ -902,26 +919,6 @@ article {
 	display: none;
 }
 
-#author, #email, #url, #comment {
-	padding: .7em;
-	font-size: .9em;
-	color: #444;
-	border: 1px solid #DDD;
-	border-radius: 0;
-	background: #FFF;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	-o-appearance: none;
-	appearance: none;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	box-sizing: border-box;
-}
-#author:focus, #email:focus, #url:focus, #comment:focus {
-	border-color: #AAA;
-	outline: 0;
-}
 .comments-area {
 	padding: 2em 0;
 }
@@ -958,7 +955,7 @@ article {
 }
 
 .comments-area ol ol {
-	margin-left: 13%;
+	margin-left: 11%;
 }
 
 .comments-area ol ol li {
@@ -966,7 +963,7 @@ article {
 }
 
 .comments-area ol ol ol {
-	margin-left: 15%;
+	margin-left: 11%;
 }
 
 .comments-area article {
@@ -1054,6 +1051,10 @@ article {
 	text-align: right;
 }
 
+.comment-reply-title {
+	margin-bottom: .4em;
+}
+
 .comment-reply-link {
 	font-weight: normal;
 	font-size: .8em;
@@ -1071,6 +1072,29 @@ article {
 	background: none;
 }
 
+.comments-title {
+	font-size: 1.6em;
+	margin: 1.4em 0 0.8em 0;
+}
+/*--------------------------------------------------------------
+13.8 Search
+--------------------------------------------------------------*/
+.page-title {
+	font-size: 1.6em;
+	margin: 1.4em 0 0.8em 0;
+}
+
+.page-title span {
+	font-size: .6em;
+	color: #AAA;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.page-title span.on {
+	font-style: italic;
+	margin-right: 0;
+}
 
 /*--------------------------------------------------------------
 13.7 404
