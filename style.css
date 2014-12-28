@@ -43,6 +43,8 @@ and Blueprint http://www.blueprintcss.org/
 12.0 Media
 	12.1 Captions
 	12.2 Galleries
+13.0 Site
+	13.1 Title
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -57,7 +59,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
 	border: 0;
-	font-family: inherit;
+	font-family: Times New Roman, Microsoft YaHei;
 	font-size: 100%;
 	font-style: inherit;
 	font-weight: inherit;
@@ -82,6 +84,7 @@ html {
 
 body {
 	background: #fff; /* Fallback for when there is no custom background color defined. */
+	line-height: 1.6;
 }
 
 article,
@@ -406,17 +409,18 @@ textarea {
 5.1 Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: #333;
+	text-decoration: none;
 }
 
 a:visited {
-	color: purple;
+	color: #333;
 }
 
 a:hover,
 a:focus,
 a:active {
-	color: midnightblue;
+	background: #F7F7F7;
 }
 
 /*--------------------------------------------------------------
@@ -425,24 +429,38 @@ a:active {
 .main-navigation {
 	clear: both;
 	display: block;
-	float: left;
-	width: 100%;
+	width: 100%;	
+	border-style: solid;
+	border-width: 1px 0;
+	border-color: #EEE;
+	padding: 1em 0 1em 0;
 }
 
 .main-navigation ul {
 	list-style: none;
 	margin: 0;
-	padding-left: 0;
+	padding: 0;
 }
 
 .main-navigation li {
-	float: left;
 	position: relative;
+	display: inline-block;
+	margin: 0 1.25em;
+	max-height: 1.5em;
 }
 
 .main-navigation a {
 	display: block;
 	text-decoration: none;
+}
+
+.main-navigation a:hover {
+	background: none;
+	border-bottom: 1px dotted #CCC;
+}
+
+.main-navigation ul .current_page_item > a {
+	color: #CC3300;
 }
 
 .main-navigation ul ul {
@@ -783,4 +801,96 @@ object {
 
 .gallery-caption {
 	display: block;
+}
+
+/*--------------------------------------------------------------
+13.0 Site
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+13.1 General
+--------------------------------------------------------------*/
+.site {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.site-main {
+	max-width: 780px;
+	margin-left: auto;
+	margin-right: auto;
+}
+/*--------------------------------------------------------------
+13.2 Title
+--------------------------------------------------------------*/
+
+.site-header {
+	padding-top: 1.25em;
+	padding-bottom: 3em;
+	text-align: center;
+}
+
+.site-branding {
+	padding: 2.5em 0 1.875em 0;
+}
+
+.site-title {
+	color: #333;
+	font-size: 6em;
+	line-height: 1.2;
+	margin-bottom: 0.5em;
+	margin-top: 0;
+}
+
+.site-title a {
+	padding-bottom: 16px;
+	border-bottom: 1px dotted #CCC;
+}
+
+.site-title a:hover {
+	background: none;
+}
+
+.site-title:hover {
+	color: #000;
+}
+/*--------------------------------------------------------------
+13.3 Article
+--------------------------------------------------------------*/
+article {
+	padding: 1.25em 0 2.5em 0;
+}
+
+.entry-header {
+	text-align: center;
+}
+
+.entry-title {
+	font-size: 1.9em;
+}
+
+.entry-meta {
+	font-size: 0.8em;
+	padding: 0.6em 0 1.2em 0;
+}
+/*--------------------------------------------------------------
+13.4 Page Navigation
+--------------------------------------------------------------*/
+.navigation a {
+	display: inline-block;
+	padding: 0.4em;
+	border-bottom: 1px dotted #CCC;
+}
+
+/*--------------------------------------------------------------
+13.5 Footer
+--------------------------------------------------------------*/
+.site-footer {
+	padding: 0 0 1.5em 0;
+}
+
+.site-footer .site-info {
+	padding-top: 1em;
+	text-align: center;
+	font-size: 0.9em;
 }
