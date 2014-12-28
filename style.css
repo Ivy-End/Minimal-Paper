@@ -49,6 +49,9 @@ and Blueprint http://www.blueprintcss.org/
 	13.3 Article
 	13.4 Page Navigation
 	13.5 Footer
+	13.6 Comment
+	13.7 Search
+	13.8 404
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -85,11 +88,15 @@ html {
 *:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 	box-sizing: inherit;
 }
-
+f
 body {
+	color: #444;
 	background: #fff; /* Fallback for when there is no custom background color defined. */
 	line-height: 1.6;
 }
+
+::selection { text-shadow:none; color:#333; background:#FFD; }
+::-moz-selection { text-shadow:none; color:#333; background:#FFD; }
 
 article,
 aside,
@@ -1077,7 +1084,7 @@ article {
 	margin: 1.4em 0 0.8em 0;
 }
 /*--------------------------------------------------------------
-13.8 Search
+13.7 Search
 --------------------------------------------------------------*/
 .page-title {
 	font-size: 1.6em;
@@ -1097,7 +1104,7 @@ article {
 }
 
 /*--------------------------------------------------------------
-13.7 404
+13.8 404
 --------------------------------------------------------------*/
 .not-found {
 	padding: 2em 0;
