@@ -1,24 +1,10 @@
 /*
 Theme Name: Simple
-Theme URI: http://underscores.me/
-Author: Underscores.me
-Author URI: http://underscores.me/
-Description: Description
-Version: 1.0-wpcom
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: simple
-Tags:
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-
- Simple is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
-
-Resetting and rebuilding styles have been helped along thanks to the fine work of
-Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
-along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
-and Blueprint http://www.blueprintcss.org/
+Theme URI: http://www.ivy-end.com
+Author: Ivy_End
+Author URI: http://www.ivy-end.com
+Description: A responsive theme for WordPress
+Version: 1.2
 */
 
 /*--------------------------------------------------------------
@@ -95,8 +81,8 @@ body {
 	line-height: 1.6;
 }
 
-::selection { text-shadow:none; color:#333; background:#FFD; }
-::-moz-selection { text-shadow:none; color:#333; background:#FFD; }
+::selection { text-shadow:none; color:#333; background:#FFFFC8; }
+::-moz-selection { text-shadow:none; color:#333; background:#FFFFC8; }
 
 article,
 aside,
@@ -164,20 +150,24 @@ textarea {
 	font-family: sans-serif;
 	font-size: 16px;
 	font-size: 1.6rem;
-	line-height: 1.5;
+	line-height: 2em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
 	clear: both;
+	line-height: 1.5;
+	font-weight: normal;
 }
+
+h1 { font-size: 2.20em; margin: 0.8em 0 0.4em 0; }
+h2 { font-size: 1.60em; margin: 1.4em 0 0.8em 0; }
+h3 { font-size: 1.20em; margin: 1.0em 0 .6em 0; }
+h4 { font-size: 0.90em; margin: 1.0em 0 .6em 0; }
+h5 { font-size: 0.90em; margin: 1.0em 0 .8em 0; }
+h6 { font-size: 0.85em; margin: 1.0em 0 .8em 0; }
 
 p {
-	margin-bottom: 1.5em;
+	margin: 1.2em 0;
 }
 
 b,
@@ -193,7 +183,37 @@ i {
 }
 
 blockquote {
-	margin: 0 1.5em;
+	position: relative;
+	margin: 2em 0;
+	padding: 1em 3em 2em 3em;
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 40px;;
+
+	-webkit-margin-end: 40px}
+
+blockquote:before {
+	display: block;
+	content: "\201C";
+	line-height: 1;
+	font-size: 6em;
+	font-family: Georgia, Times New Roman, Times, serif;
+	position: absolute;
+	left: 0;
+	top: -0.1em;
+	color: #DDD;
+}
+
+blockquote cite {
+	color: #999;
+	font-size: .85em;
+	display: block;
+	margin-top: .8em;
+}
+
+blockquote cite:before {
+	content: "\2014 \2009";
 }
 
 address {
@@ -874,6 +894,10 @@ object {
 .site-title:hover {
 	color: #000;
 }
+
+.site-description {
+	font-size: .9em;
+}
 /*--------------------------------------------------------------
 13.3 Article
 --------------------------------------------------------------*/
@@ -890,8 +914,13 @@ article {
 }
 
 .entry-meta {
-	font-size: 0.8em;
+	font-size: 0.9em;
 	padding: 0.6em 0 1.2em 0;
+}
+
+.entry-content h4 {
+	padding-left: .8em;
+	border-left: 4px solid #CCC;
 }
 /*--------------------------------------------------------------
 13.4 Page Navigation
@@ -1047,7 +1076,7 @@ article {
 .comment-content {
 	font-size: .9em;
 	color: #555;
-	margin-top: 1em;
+	margin-top: 1.8em;
 }
 
 .comment-content p {
@@ -1063,6 +1092,14 @@ article {
 }
 
 .comment-reply-link {
+	font-weight: normal;
+	font-size: .8em;
+	letter-spacing: 3px;
+	border-bottom: 1px dotted #CCC;
+	padding: .4em;
+}
+
+.comment-edit-link {
 	font-weight: normal;
 	font-size: .8em;
 	letter-spacing: 3px;
