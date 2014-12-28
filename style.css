@@ -417,6 +417,10 @@ a {
 	text-decoration: none;
 }
 
+p a {
+	color: #CE6607;
+}
+
 a:visited {
 	color: #333;
 }
@@ -820,7 +824,7 @@ object {
 }
 
 .site-main {
-	max-width: 780px;
+	max-width: 960px;
 	margin-left: auto;
 	margin-right: auto;
 }
