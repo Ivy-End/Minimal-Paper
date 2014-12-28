@@ -553,6 +553,15 @@ a:active {
 }
 
 @media screen and (max-width: 600px) {
+	.menu-toggle {
+		background: none;
+		color: #333;
+		font-size: 1.2em;
+		padding: 0;
+		margin: 0;
+		text-decoration: none;
+		text-align: center;
+	}
 	.menu-toggle,
 	.main-navigation.toggled .nav-menu {
 		display: block;
