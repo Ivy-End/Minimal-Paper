@@ -135,11 +135,11 @@ add_filter('comment_form_default_fields','simple_reply_fields');
 /**
  * Gavatar
  */
-function iopenv_get_https_avatar($avatar) {
+function simple_get_https_avatar($avatar) {
 	// Replacement for HTTPS domain
 	$avatar = str_replace(array("www.gravatar.com", "0.gravatar.com", "1.gravatar.com", "2.gravatar.com"), "secure.gravatar.com", $avatar);
 	// Replacement for HTTPS protocol
 	$avatar = str_replace("http", "https", $avatar);
 	return $avatar;
 }
-add_filter('get_avatar', 'iopenv_get_https_avatar');
+add_filter('get_avatar', 'simple_get_https_avatar');
