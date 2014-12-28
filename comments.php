@@ -25,8 +25,10 @@ if ( post_password_required() ) {
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'simple' ),
-					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
+				$comment_number = get_comments_number() . " 条评论";
+				$comment_on = '<span class="on">→</span>';
+				$comment_post = '<span>' . get_the_title() . '</span>'; 
+				echo $comment_number . $comment_on . $comment_post;
 			?>
 		</h2>
 
@@ -61,7 +63,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'simple' ); ?></p>
+		<p class="no-comments">评论关闭。</p>
 	<?php endif; ?>
 
 	<?php comment_form(array('comment_notes_after' => '', 'comment_notes_before' => '')); ?>

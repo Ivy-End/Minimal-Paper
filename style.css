@@ -63,7 +63,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
 	border: 0;
-	font-family: Times New Roman, Microsoft YaHei;
+	font-family: Georgia, Microsoft YaHei;
 	font-size: 100%;
 	font-style: inherit;
 	font-weight: inherit;
@@ -898,24 +898,6 @@ article {
 	font-size: 1.6em;
 }
 
-.comment-form-author {
-	margin-right: 12px;
-}
-
-.comment-form-email {
-	margin-left: 12px;
-	margin-right: 12px;
-}
-
-.comment-form-url {
-	margin-left: 12px; 
-}
-
-.comment-form-author, .comment-form-email, .comment-form-url {
-	display: block;
-	float: left;
-}
-
 .comment-form-comment label {
 	display: none;
 }
@@ -940,6 +922,156 @@ article {
 	border-color: #AAA;
 	outline: 0;
 }
+.comments-area {
+	padding: 2em 0;
+}
+
+.commentlist {
+	padding: .5em 0 1.5em 0;
+}
+
+.comments-title {
+	font-size: 1.6em;
+	margin: 1.4em 0 0.8em 0;
+}
+
+.comments-title span {
+	font-size: .6em;
+	color: #AAA;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.comments-title span.on {
+	font-style: italic;
+	margin-right: 0;
+}
+
+.comments-area ol {
+	list-style: none;
+	padding-left: 0;
+	margin-left: 0;
+}
+
+.comments-area ol li {
+	padding-top: 1em;
+}
+
+.comments-area ol ol {
+	margin-left: 13%;
+}
+
+.comments-area ol ol li {
+	padding-top: 0;
+}
+
+.comments-area ol ol ol {
+	margin-left: 15%;
+}
+
+.comments-area article {
+	position: relative;
+	margin-left: 105px;
+	margin-bottom: 1em;
+	padding: 1em 1.6em;
+	border: 1px solid #EEE;
+	border-left: 2px solid #555;
+}
+
+.comment-author-admin article {
+	border-left: 2px solid #C30;
+}
+
+.comments-area article:before {
+	content: "";
+	position: absolute;
+	top: 1em;
+	right: 100%;
+	width: 0;
+	height: 0;
+	border-top: 12px solid #555;
+	border-left: 16px solid transparent;
+}
+
+.comment-author-admin article:before {
+	border-top: 12px solid #C30 	;
+}
+
+.comment-author img {
+	position: absolute;
+	top: 0;
+	width: 65px;
+	left: -105px;
+}
+
+.comments-area ol ol .comment-author img {
+	width: 65px;
+	left: -95px;
+}
+
+.comments-area ol ol article {
+	position: relative;
+	margin-left: 95px;
+}
+
+.comment-author .fn, .comment-reply-link {
+	font-size: .9em;
+	font-style: normal;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.comment-author {
+	float: left;
+	margin-right: .8em;
+}
+
+.comment-author .says {
+	display: none;
+}
+
+.comment-author .fn + a, .comment-metadata a time, .comment-awaiting-moderation {
+	font-size: .8em;
+	font-style: italic;
+	color: #aaa;
+}
+
+.comment-metadata {
+	float: right;
+}
+
+.comment-content {
+	font-size: .9em;
+	color: #555;
+	margin-top: 1em;
+}
+
+.comment-content p {
+	margin: .8em 0 .2em 0;
+}
+
+.comment .reply {
+	text-align: right;
+}
+
+.comment-reply-link {
+	font-weight: normal;
+	font-size: .8em;
+	letter-spacing: 3px;
+	border-bottom: 1px dotted #CCC;
+	padding: .4em;
+}
+
+#cancel-comment-reply-link {
+	color: #CE6607;
+}
+
+#cancel-comment-reply-link:hover {
+	color: #A35208;
+	background: none;
+}
+
+
 /*--------------------------------------------------------------
 13.7 404
 --------------------------------------------------------------*/
