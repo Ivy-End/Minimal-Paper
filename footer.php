@@ -12,9 +12,8 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'simple' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'simple' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( __( 'Theme: %1$s by %2$s.', 'simple' ), 'Simple', '<a href="http://underscores.me/" rel="designer">Underscores.me</a>' ); ?>
+			<span>Copyright © 2013-<?php echo date('Y'); ?></span>
+			<a href="http://www.ivy-end.com">Ivy_End</a>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
