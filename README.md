@@ -7,3 +7,4 @@ Version 1.2
 * Single column
 * Elegent color
 * Originized Comments List
+* E-mail notify for any comments
