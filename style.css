@@ -1010,7 +1010,7 @@ article {
 	margin-left: 11%;
 }
 
-.comments-area article {
+.comment article {
 	position: relative;
 	margin-left: 105px;
 	margin-bottom: 1em;
@@ -1019,11 +1019,11 @@ article {
 	border-left: 2px solid #555;
 }
 
-.comment-author-admin article {
+.bypostauthor > article {
 	border-left: 2px solid #C30;
 }
 
-.comments-area article:before {
+.comment article:before {
 	content: "";
 	position: absolute;
 	top: 1em;
@@ -1034,9 +1034,17 @@ article {
 	border-left: 16px solid transparent;
 }
 
-.comment-author-admin article:before {
-	border-top: 12px solid #C30 	;
+.bypostauthor > article:before {
+	content: "";
+	position: absolute;
+	top: 1em;
+	right: 100%;
+	width: 0;
+	height: 0;
+	border-top: 12px solid #C30;
+	border-left: 16px solid transparent;
 }
+
 
 .comment-author img {
 	position: absolute;
