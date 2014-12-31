@@ -453,6 +453,10 @@ p a {
 	color: #CE6607;
 }
 
+p a:visited {
+	color: #CE6607;
+}
+
 a:visited {
 	color: #333;
 }
