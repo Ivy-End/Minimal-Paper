@@ -545,6 +545,7 @@ a:active {
 .main-navigation .current_page_item > a,
 .main-navigation .current-menu-item > a,
 .main-navigation .current_page_ancestor > a {
+	color: #CC3300;
 }
 
 /* Small menu */
@@ -552,7 +553,7 @@ a:active {
 	display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {	
 	.menu-toggle,
 	.main-navigation.toggled .nav-menu {
 		display: block;
