@@ -457,10 +457,13 @@ a:visited {
 	color: #333;
 }
 
+a:hover {
+	background: #F7F7F7;
+}
+
 a:hover,
 a:focus,
 a:active {
-	background: #F7F7F7;
 }
 
 /*--------------------------------------------------------------
