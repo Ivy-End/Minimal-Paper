@@ -172,3 +172,35 @@ function comment_mail_notify($comment_id) {
   }
 }
 add_action('comment_post', 'comment_mail_notify');
+
+/* Contents */
+function contents_shortcode() {
+	$output = "<div class='contents'>";
+	$categories = get_categories();
+	foreach ($categories as $category) {
+		$ret .= '<h2 class="category-title"><a href="'.get_category_link( $category->term_id ).'">'.$category->name.'</a><span>'.$category->count.'</span></h2>';
+		$argc = array (
+				'numberposts' => 100,
+				'category' => $category->cat_ID
+			);
+		$posts = get_posts($argc);
+		foreach($posts as $post) {
+			$time = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+			if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+				$time = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+			}
+			$time = sprintf( $time,
+				esc_attr(get_the_date('c', $post->ID)),
+				esc_html(get_the_date('Y 年 n 月 j 日', $post->ID)),
+				esc_attr(get_the_modified_date('c', $post->ID)),
+				esc_html(get_the_modified_date('Y 年 n 月 j 日', $post->ID))
+			);
+			$ret .= '<div class="content-entry"><a href="'.get_permalink($post).'">'.$post->post_title.'</a><span>'.$time.'</span></div>';
+		}
+	}
+	$ret .= "</div>";
+	return $ret;
+}
+
+add_shortcode('contents', 'contents_shortcode');
+?>
