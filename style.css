@@ -39,6 +39,7 @@ Version: 1.2
 	13.7 Search
 	13.8 404
 	13.9 Contents
+	13.10 Left Navigation
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -565,6 +566,23 @@ a:active {
 	.menu-toggle,
 	.main-navigation.toggled .nav-menu {
 		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		color: #333;
+		background: none;
+	}
+
+	.menu-toggle {
+		font-size: 1.6em;
+	}
+
+	.menu-toggle:hover {
+		background: none;
+		border-bottom: 1px dotted 	#CCC;
+	}
+
+	.menu-toggle:focus, .menu-toggle:visited {
+		background: none;
 	}
 
 	.main-navigation ul {
@@ -1187,4 +1205,26 @@ article {
 	color: #AAA;
 	margin-left: 1em;
 	margin-right: 1em;
+}
+
+/*--------------------------------------------------------------
+13.10 Left Navigation
+--------------------------------------------------------------*/
+.button-up {
+	width: 48px;
+	height: 100%;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 36px;
+	color: #D3DBE4;
+	display: none;
+	background: none;
+}
+
+.button-up:hover {
+	color: #6A86A4;
+	background: #E7EAF0;
 }

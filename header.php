@@ -17,10 +17,21 @@
 		<!--Support MathJax-->
 		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
+		<!--Support Font Awesome-->
+		<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/fonts/font-awesome.css" type="text/css" media="screen" />
+
+		<?php wp_enqueue_script("jquery"); ?>
 		<?php wp_head(); ?>
+
+		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/site.js"></script>
 	</head>
 
 	<body <?php body_class(); ?>>
+		<!-- Left Navigation -->
+		<div class="button-up">
+			<i class="fa fa-arrow-circle-up"></i>
+		</div>
+
 		<div id="page" class="hfeed site">
 			<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'simple' ); ?></a>
 

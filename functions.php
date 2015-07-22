@@ -156,14 +156,14 @@ function comment_mail_notify($comment_id) {
     $to = trim(get_comment($parent_id)->comment_author_email);
     $subject = '您在 [' . get_option("blogname") . '] 的留言有了新回复';
     $message = '
-    <div style="background-color:#eef2fa; border:1px solid #d8e3e8; color:#111; padding:0 15px; -moz-border-radius:5px; -webkit-border-radius:5px; -khtml-border-radius:5px;">
+    <div>
       <p>' . trim(get_comment($parent_id)->comment_author) . ', 您好!</p>
-      <p>您曾在《' . get_the_title($comment->comment_post_ID) . '》的留言:<br />'
-       . trim(get_comment($parent_id)->comment_content) . '</p>
-      <p>' . trim($comment->comment_author) . ' 给您的回复:<br />'
-       . trim($comment->comment_content) . '<br /></p>
-      <p>您可以点击 查看回复完整內容</p>
-      <p>欢迎再度光临 ' . get_option('blogname') . '</p>
+      <p>您曾在《' . get_the_title($comment->comment_post_ID) . '》的留言:<br /><blockquote>'
+       . trim(get_comment($parent_id)->comment_content) . '</blockquote></p>
+      <p>' . trim($comment->comment_author) . ' 给您的回复:<br /><blockquote>'
+       . trim($comment->comment_content) . '</blockquote></p>
+      <p>您可以<a href="" target="_blank">点击</a>查看回复完整內容</p>
+      <p>欢迎再度光临 <a href="' . esc_url( home_url( '/' ) ) .' rel="home">' . bloginfo( 'name' ) . '</a></p>
       <p>(此邮件由系统自动发送，请勿回复.)</p>
     </div>';
     $from = "From: \"" . get_option('blogname') . "\" <$wp_email>";
@@ -195,7 +195,7 @@ function contents_shortcode() {
 				esc_attr(get_the_modified_date('c', $post->ID)),
 				esc_html(get_the_modified_date('Y 年 n 月 j 日', $post->ID))
 			);
-			$ret .= '<div class="content-entry"><a href="'.get_permalink($post).'">'.$post->post_title.'</a><span>'.$time.'</span></div>';
+			$ret .= '<div class="content-entry"><a href="'.get_permalink($post).'">'.$post->post_title.'</a><span>'.$time.'</div>';
 		}
 	}
 	$ret .= "</div>";
