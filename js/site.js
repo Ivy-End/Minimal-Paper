@@ -2,11 +2,15 @@ var buttonUp = false;
 
 jQuery(document).ready(function($) {
 	$(window).scroll(function() {
-		if (!buttonUp && $(window).scrollTop() >= 1200) {
+		var scrollTo = $(window).scrollTop();
+		var docHeight = $(document).height();
+		var windowHeight = $(window).height();
+		scrollPercent = (scrollTo / (docHeight - windowHeight)) * 100;
+		if (!buttonUp && scrollPercent >= 10) {
 			$('.button-up').show();
 			buttonUp = true;
 		};
-		if ($(window).scrollTop() < 1200) {
+		if (scrollPercent < 10) {
 			$('.button-up').hide();
 			buttonUp = false;
 		};
