@@ -14,6 +14,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
+		<!-- SEO Comment -->
+		<?php 
+			if( is_single() || is_page() ) {
+			    if( function_exists('get_query_var') ) {
+			        $cpage = intval(get_query_var('cpage'));
+			        $commentPage = intval(get_query_var('comment-page'));
+			    }
+			    if( !empty($cpage) || !empty($commentPage) ) {
+			        echo '<meta name="robots" content="noindex, nofollow" />';
+			        echo "\n";
+			    }
+			}
+		?>
+
 		<!--Support MathJax-->
 		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 

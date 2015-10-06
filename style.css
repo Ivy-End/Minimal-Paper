@@ -1155,6 +1155,13 @@ article {
 	font-size: 1.6em;
 	margin: 1.4em 0 0.8em 0;
 }
+
+#comment-loading {
+	display: none;
+	width: 100%;
+	height: 10px;
+	background: url(img/loading.gif) no-repeat center;
+}
 /*--------------------------------------------------------------
 13.7 Search
 --------------------------------------------------------------*/
