@@ -4,7 +4,11 @@ This is a simple theme for WordPress.
 
 ### Version 2.0 (Updated 2018)
 
-* Under construction
+##### Archives
+Usage: Add a post and edit the content as '[archives]'
+
+##### Categories
+Usage: Add a post and edit the content as '[categories]'
 
 ### Version 1.2 (Updated 2015)
 

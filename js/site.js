@@ -18,8 +18,8 @@ jQuery(document).ready(function($) {
 	});
 
 	$('.button-up').click(function() {
-		$(document.body).animate({scrollTop: $(".site-header").offset().top}, 1000);
-	})
+		$('html, body').animate({scrollTop: $(".site-header").offset().top}, 1000);
+	});
 
 	// 评论分页
 	$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $ ('html,body');

@@ -119,6 +119,8 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
+add_theme_support( 'html5', array( 'search-form' ) );
+
 
 /**
  * Reply form fields
@@ -173,34 +175,62 @@ function comment_mail_notify($comment_id) {
 }
 add_action('comment_post', 'comment_mail_notify');
 
-/* Contents */
-function contents_shortcode() {
-	$output = "<div class='contents'>";
-	$categories = get_categories();
-	foreach ($categories as $category) {
-		$ret .= '<h2 class="category-title"><a href="'.get_category_link( $category->term_id ).'">'.$category->name.'</a><span>'.$category->count.'</span></h2>';
-		$argc = array (
-				'numberposts' => 100,
-				'category' => $category->cat_ID
-			);
-		$posts = get_posts($argc);
-		foreach($posts as $post) {
-			$time = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
-			if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-				$time = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
-			}
-			$time = sprintf( $time,
-				esc_attr(get_the_date('c', $post->ID)),
-				esc_html(get_the_date('Y 年 n 月 j 日', $post->ID)),
-				esc_attr(get_the_modified_date('c', $post->ID)),
-				esc_html(get_the_modified_date('Y 年 n 月 j 日', $post->ID))
-			);
-			$ret .= '<div class="content-entry"><a href="'.get_permalink($post).'">'.$post->post_title.'</a><span>'.$time.'</div>';
+/* Archives */
+function archives_shortcode() {
+	$ret = "<div class='contents'><section id='posts' class='posts-collapse'>";
+	$argc = array (
+		'posts_per_page' => 1000
+	);
+	$posts = get_posts( $argc );
+	$lastYear = 0;
+	foreach($posts as $post) {
+		$currentYear =get_the_date('Y', $post->ID);
+		if ($currentYear != $lastYear) {
+			$lastYear = $currentYear;
+			$ret .= "<div class='collection-title'>";
+			$ret .= "	<h2 class='archive-year' id='archive-year-'".$currentYear."'>".$currentYear."</h2>";
+			$ret .= "</div>";
 		}
+
+		$ret .= "<article class='post post-type-normal'>";
+		$ret .= "	<header class='post-header'>";
+		$ret .= "		<h1 class='post-title'>";
+		$ret .= "			<a class='post-title-link' href='".get_permalink($post)."' target='_blank'>";
+		$ret .= "				<span>".$post->post_title."</span>";
+		$ret .= "			</a>";
+		$ret .= "		 </h1>";
+		$ret .= "		<div class='post-meta'>";
+		$ret .= "			<time class='post-time' datetime='".esc_attr(get_the_date('c', $post->ID))."'>";
+		$ret .= "				".esc_html(get_the_date('m-d', $post->ID));
+		$ret .= "			</time>";
+		$ret .= "		</div>";
+		$ret .= "	</header>";
+		$ret .= "</article>";
 	}
+	$ret .= "</section></div>";
+	return $ret;
+}
+add_shortcode('archives', 'archives_shortcode');
+
+/* Categories */
+function categories_shortcode() {
+	$ret = "<div class='category-all-page'>";
+	$ret .= "	<div class='category-all-title'>";
+	$categories = get_categories();
+	$ret .= "		目前共计 ".count($categories)." 个分类";
+	$ret .= "	</div>";
+	$ret .= "	<div class='category-all'>";
+	$ret .= "		<ul class='category-list'>";
+	foreach ($categories as $category) {
+		$ret .= "			<li class='category-list-item'>";
+		$ret .= "				<a class='category-list-link' href='".get_category_link( $category->term_id )."'>".$category->name."</a>";
+		$ret .= "				<span class='category-list-count'>".$category->count."</span>";
+		$ret .= "			</li>";
+	}
+	$ret .= "		</ul>";
+	$ret .= "	</div>";
 	$ret .= "</div>";
 	return $ret;
 }
-
-add_shortcode('contents', 'contents_shortcode');
+add_shortcode('categories', 'categories_shortcode');
 ?>

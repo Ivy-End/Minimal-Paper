@@ -11,7 +11,8 @@
 <html <?php language_attributes(); ?>>
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="<?php bloginfo('description'); ?>">
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 		<!--Support MathJax-->
@@ -24,6 +25,7 @@
 		<?php wp_head(); ?>
 
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/site.js"></script>
+		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/wp_cirrus_gwt.nocache.js"></script>
 	</head>
 
 	<body <?php body_class(); ?>>
@@ -33,17 +35,15 @@
 		</div>
 
 		<div id="page" class="hfeed site">
-			<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'simple' ); ?></a>
-
-			<header id="masthead" class="site-header" role="banner">
-				<div class="site-branding">
+			<header id="header" class="site-header" role="banner">
+				<div class="site-header-inner">
 					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 				</div><!-- .site-branding -->
-
 				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<button class="menu-toggle" aria-controls="menu" aria-expanded="false">导航</button>
-					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+					<?php wp_nav_menu( array( 'container' => false, 'theme_location' => 'primary' ) ); ?>
+					<div class="site-search">
+						<?php get_search_form(true); ?>
+					</div>
 				</nav><!-- #site-navigation -->
 			</header><!-- #masthead -->
 
