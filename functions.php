@@ -233,4 +233,25 @@ function categories_shortcode() {
 	return $ret;
 }
 add_shortcode('categories', 'categories_shortcode');
+
+function add_prism() {
+    
+    // 注册 prism.css 文件
+    wp_register_style(
+        'prismCSS', // handle name for the style 
+        get_stylesheet_directory_uri() . '/prism.css' // location of the prism.css file
+    );
+
+    //注册 prism.js 文件
+    wp_register_script(
+        'prismJS', // handle name for the script 
+        get_stylesheet_directory_uri() . '/prism.js' // location of the prism.js file
+    );
+
+    // 将注册的样式和脚本文件编入查询
+    wp_enqueue_style('prismCSS');
+    wp_enqueue_script('prismJS');
+}
+add_action('wp_enqueue_scripts', 'add_prism');
+
 ?>

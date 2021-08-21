@@ -1,4 +1,4 @@
-/*
+/* 
 Theme Name: Simple
 Theme URI: http://www.ivy-end.com
 Author: Ivy_End
@@ -46,8 +46,8 @@ Version: 1.2
 1.0 Reset
 --------------------------------------------------------------*/
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+a, abbr, acronym, address, big, cite,
 del, dfn, em, font, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 dl, dt, dd, ol, ul, li,
@@ -83,8 +83,8 @@ body {
 	line-height: 1.6;
 }
 
-::selection { text-shadow:none; color:#333; background:#FFFFC8; }
-::-moz-selection { text-shadow:none; color:#333; background:#FFFFC8; }
+/* ::selection { text-shadow:none; color:#333; background:#FFFFC8; }
+::-moz-selection { text-shadow:none; color:#333; background:#FFFFC8; } */
 
 article,
 aside,
@@ -223,19 +223,6 @@ address {
 	margin: 0 0 1.5em;
 }
 
-pre {
-	background: #eee;
-	font-family: "Courier 10 Pitch", Courier, monospace;
-	font-size: 15px;
-	font-size: 1.5rem;
-	line-height: 1.6;
-	margin-bottom: 1.6em;
-	max-width: 100%;
-	overflow: auto;
-	padding: 1.6em;
-}
-
-code,
 kbd,
 tt,
 var {
