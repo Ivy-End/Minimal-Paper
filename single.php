@@ -1,31 +1,11 @@
-<?php
-/**
- * The template for displaying all single posts.
- *
- * @package Simple
- */
-
-get_header(); ?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php get_template_part( 'content', 'single' ); ?>
-
-			<?php // simple_post_nav(); ?>
-
-			<?php
-				// If comments are open or we have at least one comment, load up the comment template
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
-			?>
-
-		<?php endwhile; // end of the loop. ?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+<?php get_header(); ?>
+<main id="content" role="main">
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<?php get_template_part( 'entry' ); ?>
+<?php if ( comments_open() && !post_password_required() ) { comments_template( '', true ); } ?>
+<?php endwhile; endif; ?>
+<footer class="footer">
+<?php get_template_part( 'nav', 'below-single' ); ?>
+</footer>
+</main>
 <?php get_footer(); ?>

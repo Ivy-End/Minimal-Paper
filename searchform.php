@@ -1,5 +1,9 @@
-<!-- search -->
-<form class="search" method="get" action="<?php echo home_url(); ?>" role="search">
-	<input class="search-input" type="search" name="s" placeholder="<?php _e( '', 'html5blank' ); ?>">
+<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
+    <div>
+		<label class="screen-reader-text" for="s">Search for: </label>
+        <input type="text" value="" name="s" id="s" />
+        <button type="submit" id="searchsubmit">
+			<i class="fas fa-search"></i>
+		</button>
+    </div>
 </form>
-<!-- /search -->

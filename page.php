@@ -1,34 +1,17 @@
-<?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * @package Simple
- */
-
-get_header(); ?>
-
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
-			<?php while ( have_posts() ) : the_post(); ?>
-
-				<?php get_template_part( 'content', 'page' ); ?>
-
-				<?php
-					// If comments are open or we have at least one comment, load up the comment template
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
-					endif;
-				?>
-
-			<?php endwhile; // end of the loop. ?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+<?php get_header(); ?>
+<main id="content" role="main">
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<header class="header">
+<h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1> <?php edit_post_link(); ?>
+</header>
+<div class="entry-content" itemprop="mainContentOfPage">
+<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'full', array( 'itemprop' => 'image' ) ); } ?>
+<?php the_content(); ?>
+<div class="entry-links"><?php wp_link_pages(); ?></div>
+</div>
+</article>
+<?php if ( comments_open() && !post_password_required() ) { comments_template( '', true ); } ?>
+<?php endwhile; endif; ?>
+</main>
 <?php get_footer(); ?>
