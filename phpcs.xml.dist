@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <ruleset name="WordPress Theme Coding Standards">
 	<!-- See https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
-	<!-- See https://github.com/WordPress/WordPress-Coding-Standards -->
-	<!-- See https://github.com/WPTRT/WPThemeReview -->
-	<!-- See https://github.com/PHPCompatibility/PHPCompatibilityWP -->
+	<!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
+	<!-- See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki -->
+	<!-- See https://github.com/wimg/PHPCompatibility -->
 
 	<!-- Set a description for this ruleset. -->
 	<description>A custom set of code standard rules to check for WordPress themes.</description>
@@ -25,31 +25,24 @@
 	<!-- Strip the filepaths down to the relevant bit. -->
 	<arg name="basepath" value="./"/>
 
-	<!-- Check up to 8 files simultaneously. -->
+	<!-- Check up to 8 files simultanously. -->
 	<arg name="parallel" value="8"/>
 
-	<!-- Check PHP files only. JavaScript and CSS files are checked separately using the @wordpress/scripts package. -->
-	<arg name="extensions" value="php"/>
+	<!-- Only check the PHP, CSS and SCSS files. JS files are checked separately with JSCS and JSHint. -->
+	<arg name="extensions" value="php,css,scss/css"/>
 
 	<!-- Check all files in this directory and the directories below it. -->
 	<file>.</file>
 
-	<!-- Exclude patterns. -->
-	<exclude-pattern>/vendor/*</exclude-pattern>
-	<exclude-pattern>/node_modules/*</exclude-pattern>
-
 
 	<!--
 	#############################################################################
-	USE THE WordPress AND THE Theme Review RULESET
+	USE THE WordPress RULESET
 	#############################################################################
 	-->
 
-	<rule ref="WordPress">
-		<!-- This rule does not apply here since the _s prefix should be changed by the theme author. -->
-		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed"/>
-	</rule>
-	<rule ref="WPThemeReview"/>
+	<rule ref="WordPress"/>
+
 
 	<!--
 	#############################################################################
@@ -104,7 +97,36 @@
 	#############################################################################
 	-->
 
-	<config name="testVersion" value="5.6-"/>
-	<rule ref="PHPCompatibilityWP"/>
+
+	<config name="testVersion" value="5.2-99.0"/>
+	<rule ref="PHPCompatibility">
+		<!-- Whitelist PHP native classes, interfaces, functions and constants which
+			 are back-filled by WP.
+
+			 Based on:
+			 * /wp-includes/compat.php
+			 * /wp-includes/random_compat/random.php
+		-->
+		<exclude name="PHPCompatibility.PHP.NewClasses.errorFound"/>
+		<exclude name="PHPCompatibility.PHP.NewClasses.typeerrorFound"/>
+
+		<exclude name="PHPCompatibility.PHP.NewConstants.json_pretty_printFound"/>
+		<exclude name="PHPCompatibility.PHP.NewConstants.php_version_idFound"/>
+
+		<exclude name="PHPCompatibility.PHP.NewFunctions.hash_equalsFound"/>
+		<exclude name="PHPCompatibility.PHP.NewFunctions.json_last_error_msgFound"/>
+		<exclude name="PHPCompatibility.PHP.NewFunctions.random_intFound"/>
+		<exclude name="PHPCompatibility.PHP.NewFunctions.random_bytesFound"/>
+		<exclude name="PHPCompatibility.PHP.NewFunctions.array_replace_recursiveFound"/>
+
+		<exclude name="PHPCompatibility.PHP.NewInterfaces.jsonserializableFound"/>
+	</rule>
+
+	<!-- Whitelist the WP Core mysql_to_rfc3339() function. -->
+	<rule ref="PHPCompatibility.PHP.RemovedExtensions">
+		<properties>
+			<property name="functionWhitelist" type="array" value="mysql_to_rfc3339"/>
+		</properties>
+	</rule>
 
 </ruleset>

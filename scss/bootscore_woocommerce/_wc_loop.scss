@@ -1,0 +1,51 @@
+/*--------------------------------------------------------------
+WooCommerce Loop
+--------------------------------------------------------------*/
+
+// Products
+.woocommerce .card {
+
+  // Product link
+  a.woocommerce-LoopProduct-link.woocommerce-loop-product__link {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // Product title
+  .woocommerce-loop-product__title {
+    @extend .h5;
+  }
+
+  // Star ratings
+  .star-rating {
+    float: none;
+    margin: $spacer auto;
+
+    span::before {
+      text-align: left;
+    }
+  }
+
+  // Price
+  .price {
+    display: block;
+    margin-bottom: $spacer;
+  }
+}
+
+
+// Buttons
+.product .card-body a.button,
+.product-category .card-body a {
+  margin-top: auto;
+}
+
+
+// Categories
+// Category loop image
+.product-category .card img {
+  @extend .card-img-top;
+}

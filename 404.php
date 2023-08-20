@@ -1,60 +1,38 @@
 <?php
+
 /**
  * The template for displaying 404 pages (not found)
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Minimal_Paper
+ * @package Bootscore
  */
 
 get_header();
 ?>
+  <div id="content" class="site-content <?= bootscore_container_class(); ?> py-5 mt-5">
+    <div id="primary" class="content-area">
 
-	<main id="primary" class="site-main">
+      <main id="main" class="site-main">
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'minimal-paper' ); ?></h1>
-			</header><!-- .page-header -->
+        <section class="error-404 not-found">
+          <div class="page-404">
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'minimal-paper' ); ?></p>
+            <h1 class="mb-3">404</h1>
+            <!-- Remove this line and place some widgets -->
+            <p class="alert alert-info mb-4"><?php esc_html_e('Page not found.', 'bootscore'); ?></p>
+            <!-- 404 Widget -->
+            <?php if (is_active_sidebar('404-page')) : ?>
+              <div><?php dynamic_sidebar('404-page'); ?></div>
+            <?php endif; ?>
+            <a class="btn btn-outline-primary" href="<?= esc_url(home_url()); ?>" role="button"><?php esc_html_e('Back Home &raquo;', 'bootscore'); ?></a>
+          </div>
+        </section><!-- .error-404 -->
 
-					<?php
-					get_search_form();
+      </main><!-- #main -->
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'minimal-paper' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$minimal_paper_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'minimal-paper' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$minimal_paper_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
+    </div><!-- #primary -->
+  </div><!-- #content -->
 
 <?php
 get_footer();

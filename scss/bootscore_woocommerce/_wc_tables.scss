@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------
+WooCommerce Tables
+--------------------------------------------------------------*/
+
+// Borders
+#add_payment_method .cart-collaterals .cart_totals tr td,
+#add_payment_method .cart-collaterals .cart_totals tr th,
+.woocommerce-cart .cart-collaterals .cart_totals tr td,
+.woocommerce-cart .cart-collaterals .cart_totals tr th,
+.woocommerce-checkout .cart-collaterals .cart_totals tr td,
+.woocommerce-checkout .cart-collaterals .cart_totals tr th {
+  border-top: 1px solid;
+}
+
+.woocommerce table.shop_attributes td {
+  border-bottom: 1px solid;
+}
+
+.woocommerce table.shop_attributes th {
+  border-bottom: 1px solid;
+}
+
+.woocommerce table.shop_attributes {
+  border-top: 1px solid;
+}
+
+.woocommerce table.shop_table td {
+  border-top: 1px solid;
+}
+
+// Woo table border-radius
+.woocommerce table.shop_table {
+  border-radius: $border-radius;
+}
+
+// Border radius cart actions
+// WooCommerce breakpoints are at 769px
+@media (max-width: 768px) {
+  .shop_table_responsive td.actions {
+    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+}

@@ -1,0 +1,32 @@
+/*--------------------------------------------------------------
+Colors
+--------------------------------------------------------------*/
+
+// Text selection
+::selection {
+  color: var(--#{$prefix}white);
+  background-color: var(--#{$prefix}primary);
+}
+
+::-moz-selection {
+  color: var(--#{$prefix}white);
+  background-color: var(--#{$prefix}primary);
+}
+
+// pre tag
+pre {
+  background-color: var(--#{$prefix}tertiary-bg);
+}
+
+// Reset focus
+:focus {
+  outline: none !important;
+  outline: -webkit-focus-ring-color none !important;
+  outline-color: -webkit-focus-ring-color none !important;
+  outline-style: none !important;
+  outline-width: 0 !important;
+}
+
+.nav-link:focus-visible {
+  box-shadow: none;
+}
