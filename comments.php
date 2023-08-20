@@ -1,40 +1,77 @@
-<div id="comments">
 <?php
-if ( have_comments() ) :
-global $comments_by_type;
-$comments_by_type = separate_comments( $comments );
-if ( !empty( $comments_by_type['comment'] ) ) :
+/**
+ * The template for displaying comments
+ *
+ * This is the template that displays the area of the page that contains both the current comments
+ * and the comment form.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package Minimal_Paper
+ */
+
+/*
+ * If the current post is protected by a password and
+ * the visitor has not yet entered the password we will
+ * return early without loading the comments.
+ */
+if ( post_password_required() ) {
+	return;
+}
 ?>
-<section id="comments-list" class="comments">
-<h2 class="comments-title"><?php comments_number(); ?></h2>
-<?php if ( get_comment_pages_count() > 1 ) : ?>
-<nav id="comments-nav-above" class="comments-navigation" role="navigation">
-<div class="paginated-comments-links"><?php paginate_comments_links(); ?></div>
-</nav>
-<?php endif; ?>
-<ul>
-<?php wp_list_comments( 'type=comment' ); ?>
-</ul>
-<?php if ( get_comment_pages_count() > 1 ) : ?>
-<nav id="comments-nav-below" class="comments-navigation" role="navigation">
-<div class="paginated-comments-links"><?php paginate_comments_links(); ?></div>
-</nav>
-<?php endif; ?>
-</section>
-<?php
-endif;
-if ( !empty( $comments_by_type['pings'] ) ) :
-$ping_count = count( $comments_by_type['pings'] );
-?>
-<section id="trackbacks-list" class="comments">
-<h2 class="comments-title"><?php echo '<span class="ping-count">' . esc_html( $ping_count ) . '</span> ' . esc_html( _nx( 'Trackback or Pingback', 'Trackbacks and Pingbacks', $ping_count, 'comments count', 'blankslate' ) ); ?></h2>
-<ul>
-<?php wp_list_comments( 'type=pings&callback=blankslate_custom_pings' ); ?>
-</ul>
-</section>
-<?php
-endif;
-endif;
-if ( comments_open() ) { comment_form(); }
-?>
-</div>
+
+<div id="comments" class="comments-area">
+
+	<?php
+	// You can start editing here -- including this comment!
+	if ( have_comments() ) :
+		?>
+		<h2 class="comments-title">
+			<?php
+			$minimal_paper_comment_count = get_comments_number();
+			if ( '1' === $minimal_paper_comment_count ) {
+				printf(
+					/* translators: 1: title. */
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'minimal-paper' ),
+					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
+				);
+			} else {
+				printf( 
+					/* translators: 1: comment count number, 2: title. */
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $minimal_paper_comment_count, 'comments title', 'minimal-paper' ) ),
+					number_format_i18n( $minimal_paper_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
+				);
+			}
+			?>
+		</h2><!-- .comments-title -->
+
+		<?php the_comments_navigation(); ?>
+
+		<ol class="comment-list">
+			<?php
+			wp_list_comments(
+				array(
+					'style'      => 'ol',
+					'short_ping' => true,
+				)
+			);
+			?>
+		</ol><!-- .comment-list -->
+
+		<?php
+		the_comments_navigation();
+
+		// If comments are closed and there are comments, let's leave a little note, shall we?
+		if ( ! comments_open() ) :
+			?>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'minimal-paper' ); ?></p>
+			<?php
+		endif;
+
+	endif; // Check for have_comments().
+
+	comment_form();
+	?>
+
+</div><!-- #comments -->

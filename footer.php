@@ -1,13 +1,34 @@
-                <?php get_sidebar(); ?>
-            </div>
+<?php
+/**
+ * The template for displaying the footer
+ *
+ * Contains the closing of the #content div and all content after.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package Minimal_Paper
+ */
 
-            <footer id="footer" role="contentinfo">
-                <div id="copyright">
-                    &copy; <?php echo esc_html( date_i18n('Y') ); ?> <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
-                </div>
-            </footer>
-        </div>
+?>
 
-        <?php wp_footer(); ?>
-    </body>
+	<footer id="colophon" class="site-footer">
+		<div class="site-info">
+			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'minimal-paper' ) ); ?>">
+				<?php
+				/* translators: %s: CMS name, i.e. WordPress. */
+				printf( esc_html__( 'Proudly powered by %s', 'minimal-paper' ), 'WordPress' );
+				?>
+			</a>
+			<span class="sep"> | </span>
+				<?php
+				/* translators: 1: Theme name, 2: Theme author. */
+				printf( esc_html__( 'Theme: %1$s by %2$s.', 'minimal-paper' ), 'minimal-paper', '<a href="https://www.kwang.life/">Kai Wang</a>' );
+				?>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<?php wp_footer(); ?>
+
+</body>
 </html>
